@@ -118,9 +118,9 @@ export function Profile() {
         </div>
 
         <div className="bg-gradient-to-r from-teal-50 to-cyan-50 p-6 border-t border-teal-100">
-          <h3 className="font-semibold text-gray-800 mb-2">Sobre MindWell</h3>
+          <h3 className="font-semibold text-gray-800 mb-2">Sobre Psynara</h3>
           <p className="text-sm text-gray-600 leading-relaxed">
-            MindWell es tu espacio personal de bienestar mental. Aquí puedes explorar tu salud
+            Psynara es tu espacio personal de bienestar mental. Aquí puedes explorar tu salud
             emocional, recibir recomendaciones personalizadas y practicar ejercicios que te
             ayudarán a mantener un equilibrio mental saludable.
           </p>
