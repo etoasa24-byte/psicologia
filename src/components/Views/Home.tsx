@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Heart, TrendingUp, Award, Smile } from 'lucide-react';
+import { Heart, TrendingUp, Award, Smile, BookMarked, Zap, Calendar } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 
@@ -148,7 +148,7 @@ export function Home() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl shadow-xl p-8 text-white">
+      <div className="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl shadow-xl p-8 text-white mb-8">
         <h3 className="text-2xl font-bold mb-3">
           Consejo del Día
         </h3>
@@ -156,6 +156,79 @@ export function Home() {
           La salud mental es tan importante como la salud física. Dedica al menos 10 minutos
           al día para practicar mindfulness o meditación. Tu mente te lo agradecerá.
         </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+              <Zap className="w-6 h-6 text-white" />
+            </div>
+            <h4 className="text-lg font-semibold text-gray-800">Tu Racha</h4>
+          </div>
+          <p className="text-3xl font-bold text-teal-600 mb-2">{stats.daysActive} días</p>
+          <p className="text-gray-600 text-sm">
+            Continúa así. Tu consistencia es tu superpoder.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+              <BookMarked className="w-6 h-6 text-white" />
+            </div>
+            <h4 className="text-lg font-semibold text-gray-800">Reflexiones</h4>
+          </div>
+          <p className="text-3xl font-bold text-green-600 mb-2">{stats.answeredQuestions}</p>
+          <p className="text-gray-600 text-sm">
+            Preguntas respondidas. Cada respuesta es autoconocimiento.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-white" />
+            </div>
+            <h4 className="text-lg font-semibold text-gray-800">Próximas Metas</h4>
+          </div>
+          <p className="text-3xl font-bold text-purple-600 mb-2">+5</p>
+          <p className="text-gray-600 text-sm">
+            Ejercicios completados te desbloquean recompensas.
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+        <h3 className="text-xl font-bold text-gray-800 mb-4">
+          Tu Viaje Hacia el Bienestar
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
+            <p className="text-gray-700">
+              <span className="font-semibold">Evalúate regularmente</span> para entender mejor tu estado emocional
+            </p>
+          </div>
+          <div className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
+            <p className="text-gray-700">
+              <span className="font-semibold">Practica ejercicios diariamente</span> para resultados más efectivos
+            </p>
+          </div>
+          <div className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
+            <p className="text-gray-700">
+              <span className="font-semibold">Lee recomendaciones</span> personalizadas basadas en tu perfil
+            </p>
+          </div>
+          <div className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
+            <p className="text-gray-700">
+              <span className="font-semibold">Celebra cada logro</span> por pequeño que sea
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

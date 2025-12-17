@@ -5,6 +5,9 @@ import { supabase, PsychologyGame } from '../../lib/supabase';
 import { BreathingExercise } from '../Games/BreathingExercise';
 import { GratitudeJournal } from '../Games/GratitudeJournal';
 import { CognitiveReframe } from '../Games/CognitiveReframe';
+import { BodyScan } from '../Games/BodyScan';
+import { EmotionWheel } from '../Games/EmotionWheel';
+import { MindfulnessTimer } from '../Games/MindfulnessTimer';
 
 export function Games() {
   const { profile } = useAuth();
@@ -79,8 +82,9 @@ export function Games() {
   const renderGameComponent = () => {
     if (!selectedGame) return null;
 
-    switch (selectedGame.category) {
-      case 'breathing':
+    switch (selectedGame.name) {
+      case 'Respiración Consciente':
+      case 'Técnica Somática':
         return (
           <BreathingExercise
             game={selectedGame}
@@ -88,20 +92,45 @@ export function Games() {
             onClose={() => setSelectedGame(null)}
           />
         );
-      case 'mindfulness':
-        if (selectedGame.name === 'Gratitud Diaria') {
-          return (
-            <GratitudeJournal
-              game={selectedGame}
-              onComplete={() => handleCompleteGame(selectedGame.id)}
-              onClose={() => setSelectedGame(null)}
-            />
-          );
-        }
-        break;
-      case 'cognitive':
+      case 'Gratitud Diaria':
+        return (
+          <GratitudeJournal
+            game={selectedGame}
+            onComplete={() => handleCompleteGame(selectedGame.id)}
+            onClose={() => setSelectedGame(null)}
+          />
+        );
+      case 'Desafío Cognitivo':
+      case 'Debate de Pensamientos':
+      case 'Conversación Interna':
         return (
           <CognitiveReframe
+            game={selectedGame}
+            onComplete={() => handleCompleteGame(selectedGame.id)}
+            onClose={() => setSelectedGame(null)}
+          />
+        );
+      case 'Cuerpo de Exploración':
+      case 'Escaneo Corporal':
+        return (
+          <BodyScan
+            game={selectedGame}
+            onComplete={() => handleCompleteGame(selectedGame.id)}
+            onClose={() => setSelectedGame(null)}
+          />
+        );
+      case 'Rueda de Emociones':
+        return (
+          <EmotionWheel
+            game={selectedGame}
+            onComplete={() => handleCompleteGame(selectedGame.id)}
+            onClose={() => setSelectedGame(null)}
+          />
+        );
+      case 'Meditación Diaria':
+      case 'Visualización Guiada':
+        return (
+          <MindfulnessTimer
             game={selectedGame}
             onComplete={() => handleCompleteGame(selectedGame.id)}
             onClose={() => setSelectedGame(null)}
