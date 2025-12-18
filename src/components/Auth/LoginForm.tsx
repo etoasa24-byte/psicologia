@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { LogIn, UserPlus } from 'lucide-react';
+import { Brain } from 'lucide-react';
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -39,101 +39,146 @@ export function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-          <div className="bg-gradient-to-r from-teal-500 to-cyan-600 p-8 text-white text-center">
-            <h1 className="text-3xl font-bold mb-2">MindWell</h1>
-            <p className="text-teal-100">Tu espacio de bienestar mental</p>
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl mb-6">
+            <Brain className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">MindWell</h1>
+          <p className="text-gray-500 text-base">Tu plataforma de bienestar mental</p>
+        </div>
+
+        <div className="bg-white">
+          <div className="flex space-x-1 mb-8 p-1 bg-gray-100 rounded-xl">
+            <button
+              onClick={() => {
+                setIsLogin(true);
+                setError('');
+              }}
+              className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all duration-200 ${
+                isLogin
+                  ? 'bg-white text-teal-600 shadow-md'
+                  : 'text-gray-600 hover:text-gray-700'
+              }`}
+            >
+              Iniciar Sesión
+            </button>
+            <button
+              onClick={() => {
+                setIsLogin(false);
+                setError('');
+              }}
+              className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all duration-200 ${
+                !isLogin
+                  ? 'bg-white text-teal-600 shadow-md'
+                  : 'text-gray-600 hover:text-gray-700'
+              }`}
+            >
+              Registrarse
+            </button>
           </div>
 
-          <div className="p-8">
-            <div className="flex gap-2 mb-6">
-              <button
-                onClick={() => setIsLogin(true)}
-                className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
-                  isLogin
-                    ? 'bg-teal-500 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                <LogIn className="inline w-4 h-4 mr-2" />
-                Iniciar Sesión
-              </button>
-              <button
-                onClick={() => setIsLogin(false)}
-                className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
-                  !isLogin
-                    ? 'bg-teal-500 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                <UserPlus className="inline w-4 h-4 mr-2" />
-                Registrarse
-              </button>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {!isLogin && (
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  Nombre Completo
+                </label>
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-400"
+                  placeholder="Juan Pérez"
+                  required={!isLogin}
+                />
+              </div>
+            )}
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
+                Correo Electrónico
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-400"
+                placeholder="correo@ejemplo.com"
+                required
+              />
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
+                Contraseña
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-400"
+                placeholder="Mínimo 6 caracteres"
+                required
+                minLength={6}
+              />
               {!isLogin && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Nombre Completo
-                  </label>
-                  <input
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
-                    placeholder="Tu nombre"
-                    required={!isLogin}
-                  />
-                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  Mínimo 6 caracteres para tu seguridad
+                </p>
               )}
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
-                  placeholder="tu@email.com"
-                  required
-                />
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                <p className="text-sm font-medium text-red-600">{error}</p>
               </div>
+            )}
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
-                  placeholder="••••••••"
-                  required
-                  minLength={6}
-                />
-              </div>
-
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
-                  {error}
-                </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white py-3 rounded-xl font-semibold hover:from-teal-600 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></span>
+                  Procesando...
+                </span>
+              ) : isLogin ? (
+                'Iniciar Sesión'
+              ) : (
+                'Crear Cuenta'
               )}
+            </button>
+          </form>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:from-teal-600 hover:to-cyan-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? 'Cargando...' : isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}
-              </button>
-            </form>
-          </div>
+          <p className="text-center text-sm text-gray-500 mt-6">
+            {isLogin ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}{' '}
+            <button
+              onClick={() => {
+                setIsLogin(!isLogin);
+                setError('');
+              }}
+              className="text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+            >
+              {isLogin ? 'Registrarse' : 'Inicia Sesión'}
+            </button>
+          </p>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+          <p className="text-xs text-gray-500">
+            Al continuar, aceptas nuestros{' '}
+            <span className="text-gray-600 font-medium hover:underline cursor-pointer">
+              Términos de Servicio
+            </span>
+            {' '}y{' '}
+            <span className="text-gray-600 font-medium hover:underline cursor-pointer">
+              Política de Privacidad
+            </span>
+          </p>
         </div>
       </div>
     </div>
