@@ -161,9 +161,9 @@ export function Profile() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Acerca de MindWell</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Acerca de Psynara</h3>
           <p className="text-gray-600 leading-relaxed mb-4">
-            MindWell es tu plataforma integral de bienestar mental, diseñada para ayudarte a
+            Psynara es tu plataforma integral de bienestar mental, diseñada para ayudarte a
             explorar tu salud emocional, recibir recomendaciones personalizadas basadas en
             evidencia científica, y practicar ejercicios terapéuticos que te ayudarán a
             mantener un equilibrio mental saludable.
@@ -179,14 +179,14 @@ export function Profile() {
             </div>
             <div>
               <p className="text-sm text-gray-500">Desarrollador</p>
-              <p className="font-semibold text-gray-900">MindWell Team</p>
+              <p className="font-semibold text-gray-900">Psynara Team</p>
             </div>
           </div>
         </div>
 
         <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-200">
           <p className="text-xs text-gray-500">
-            © 2024 MindWell. Todos los derechos reservados. |{' '}
+            © 2025 Psynara. Todos los derechos reservados. |{' '}
             <span className="hover:underline cursor-pointer">Términos de Servicio</span> |{' '}
             <span className="hover:underline cursor-pointer">Política de Privacidad</span>
           </p>

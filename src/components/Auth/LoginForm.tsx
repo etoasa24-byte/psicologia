@@ -45,7 +45,7 @@ export function LoginForm() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl mb-6">
             <Brain className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">MindWell</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Psynara</h1>
           <p className="text-gray-500 text-base">Tu plataforma de bienestar mental</p>
         </div>
 

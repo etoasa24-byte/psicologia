@@ -26,7 +26,7 @@ export function Navigation({ currentView, onNavigate }: NavigationProps) {
               <span className="text-white font-bold text-xl">M</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-800">MindWell</h1>
+              <h1 className="text-xl font-bold text-gray-800">Psynara</h1>
               {profile && (
                 <p className="text-xs text-gray-500">Hola, {profile.full_name}</p>
               )}
